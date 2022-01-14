@@ -1,5 +1,5 @@
 # crack-wifi
-Crack a wifi with Aircrack-ng and dictionary generator tools (like CUPP)
+Crack a WPA/WPA2 wifi with Aircrack-ng and dictionary generator tools (like CUPP)
 
 I provide in this repository a set of bash files to easily run a wifi crack.
 
