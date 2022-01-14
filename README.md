@@ -3,7 +3,7 @@ Crack a wifi with Aircrack-ng and dictionary generator tools (like CUPP)
 
 I provide in this repository a set of bash files to easily run a wifi crack.
 
-- The `handshake_establish` file: Allows the monitoring the network for handskake establishment.
+- The `handshake_establish` file: Allows the monitoring of the network for handskake establishment.
 
 - The `binary_gen_from_cat` file: Allows to generate the binary file from the .cat
 
