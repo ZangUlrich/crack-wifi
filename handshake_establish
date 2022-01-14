@@ -1,0 +1,46 @@
+# Surveillance du réseau à la recherche de l'établissement du handskake
+
+clear
+
+echo -e "\n*****Wait for the handshake to be established*****" 
+echo -e "*****Par HARA ZANG Ulrich*****\n"
+echo -e "Date: `date`\n"
+
+
+Help()
+{
+   # Display Help
+   echo "Description of the handshake_establish"
+   echo
+   echo "Syntax: ./handshake_establish [-h] [canal] [mac] [dir] "
+   echo "options:"
+   echo "h     Print this Help."
+   echo -e ""
+   echo "params:"
+   echo "canal    the chanel of the wifi target"
+   echo "mac      the mac address of the target wifi"
+   echo "dir      the directory where to keep the result"
+   echo ""
+}
+
+
+while getopts ":h" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+     \?) # incorrect option
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done
+
+canal=$1 #canal of the target wifi
+mac=$2 #mac of the target wifi
+dir=$3 #directory where to keep the result
+
+airodump-ng -c $canal --bssid $mac -w $dir wlan0
+
+echo -e "*********************"
+echo -e "*   Happy Hack :)   *" 
+echo -e "*********************\n\n"
